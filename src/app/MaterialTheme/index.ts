@@ -11,21 +11,20 @@ const light = {
   palette: {
     type: "light",
     background: {
-      default: "#f8f8ff",
-      paper: common.white,
+      default: "#080903",
+      paper: common.black,
     },
     primary: {
-      contrastText: "#d7b586",
-      main: "#343434",
+      contrastText: "#ffffff",
+      main: "#899052",
     },
     secondary: {
-      contrastText: "#343434",
-      main: "#d7b586",
+      contrastText: "#899052",
+      main: "#ffffff",
     },
     text: {
-      primary: "#343434",
-      secondary: "#d7b586",
-      dark: common.black,
+      primary: "#ffffff",
+      secondary: "#899052",
     },
   },
   components: {
@@ -40,6 +39,19 @@ const light = {
       styleOverrides: {
         html: { height: "100%" },
         body: { background: "#f4f6f8", height: "100%", minHeight: "100%" },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          border: "1px solid #899052",
+          color: "#899052",
+          backgroundColor: "#ffffff",
+          "&:hover": {
+            backgroundColor: "#899052",
+            color: "#ffffff",
+          },
+        },
       },
     },
   },
