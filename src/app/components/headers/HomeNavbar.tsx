@@ -14,7 +14,7 @@ export function HomeNavbar() {
         loop
         muted
         className="navbar-video"
-        src="/videos/background.mp4"
+        src="/videos/Jacob-godfather.mp4"
       >
         Your browser does not support the video tag.
       </video>
