@@ -19,7 +19,7 @@ root.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <App />_
+          <App />
         </Router>
       </ThemeProvider>
     </Provider>

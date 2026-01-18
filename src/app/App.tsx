@@ -7,47 +7,41 @@ import { ProductsPage } from "./screens/ProductsPage";
 import { UserPage } from "./screens/userPage";
 import { OrderPage } from "./screens/orderPage";
 import { HomePage } from "./screens/homePage";
+import { useLocation } from "react-router-dom";
+import { HomeNavbar } from "./components/headers/HomeNavbar";
+import { OtherNavbar } from "./components/headers/OtherNavbar";
+import Footer from "./components/footer/Footer";
+import "../css/app.css";
+import "../css/footer.css";
 
 function App() {
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/products">Products</NavLink>
-          </li>
-          <li>
-            <NavLink to="/mypage">My Page</NavLink>
-          </li>
-          <li>
-            <NavLink to="/orders">My Orders</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About Us</NavLink>
-          </li>
-        </ul>
-      </nav>
+  const location = useLocation();
 
-      <Switch>
-        <Route path="/about">
-          <AboutUsPage />
-        </Route>
-        <Route path="/products">
-          <ProductsPage />
-        </Route>
-        <Route path="/mypage">
-          <UserPage />
-        </Route>
-        <Route path="/orders">
-          <OrderPage />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
+  console.log("Location=>", location);
+
+  return (
+    <div className="app-container">
+      {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
+      <main className="main-content">
+        <Switch>
+          <Route path="/about">
+            <AboutUsPage />
+          </Route>
+          <Route path="/products">
+            <ProductsPage />
+          </Route>
+          <Route path="/mypage">
+            <UserPage />
+          </Route>
+          <Route path="/orders">
+            <OrderPage />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </main>
+      <Footer />
     </div>
   );
 }
