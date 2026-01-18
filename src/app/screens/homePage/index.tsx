@@ -1,5 +1,10 @@
 import { Container } from "@mui/material";
-
+import BrandSwipe from "./brands";
+import "../../../css/home.css";
 export function HomePage() {
-  return <Container>HomePagedsdlsl s ss skj s</Container>;
+  return (
+    <div className="homepage">
+      <BrandSwipe />
+    </div>
+  );
 }

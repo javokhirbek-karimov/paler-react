@@ -62,14 +62,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding-left: 35px;
-  padding-right: 35px;
   box-sizing: border-box;
-}
-
-.navbar-content > .MuiStack-root {
-  padding-left: 35px;
-  padding-right: 35px;
 }
 
 .brand-logo {
