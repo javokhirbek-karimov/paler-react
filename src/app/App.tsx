@@ -14,6 +14,7 @@ import Footer from "./components/footer/Footer";
 import "../css/app.css";
 import "../css/footer.css";
 import "../css/home.css";
+import "../css/products.css";
 
 function App() {
   const location = useLocation();
