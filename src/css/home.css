@@ -1,3 +1,11 @@
+.homepage {
+  width: 100%;
+  height: auto;
+  background-color: #000000;
+}
+
+/*  BRANDS*/
+
 .brand-swipe {
   width: 100%;
   position: relative;
@@ -31,7 +39,7 @@
   line-height: 140%;
   letter-spacing: -2%;
   color: #ffffff;
-  position: relative;
+
   margin-bottom: 40px;
   text-align: center;
   z-index: 3;
@@ -53,14 +61,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .brand-swipe .brand img {
-  width: 100%;
+  width: 250px;
   height: 100%;
   object-fit: contain;
   display: block;
   filter: none;
+  transition: transform 0.8s ease;
+}
+
+.brand-swipe .brand:hover img {
+  transform: scale(1.1);
 }
 
 .brand-swipe::-webkit-scrollbar {
@@ -134,4 +148,326 @@
   background: linear-gradient(90deg, transparent, #000000);
   pointer-events: none;
   z-index: 2;
+}
+
+/* SERVICES */
+.static-frame {
+  width: 100%;
+  height: 392px;
+  background: #a7ac6f;
+  display: flex;
+  justify-content: center;
+}
+
+.static-frame .info {
+  width: 1300px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.static-frame .info .static-box {
+  width: 280px;
+  height: 114px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.static-frame .info .static-box .static-num {
+  text-align: center;
+  font-family: "Prata";
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600px;
+  font-style: Regular;
+  line-height: 140%;
+  letter-spacing: 0%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.static-frame .info .static-box .static-text {
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+/* Best Selling Products*/
+
+.bestSellling-frame {
+  background-color: #000000;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bestSellling-frame .category-title {
+  width: auto;
+  height: 67px;
+
+  color: #ffffff;
+  font-family: Prata;
+  font-style: Regular;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -2%;
+  text-align: left;
+  margin-bottom: 7px;
+}
+
+.bestSellling-frame .category-desc {
+  width: 100%;
+  height: 24px;
+
+  color: #ffffff;
+  font-family: Lato;
+  font-style: Light;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+
+  margin-bottom: 30px;
+}
+
+.bestSellling-frame .cards-frame {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 32px;
+
+  width: 1370px;
+  height: auto;
+  margin-bottom: 80px;
+}
+
+.bestSellling-frame .cards-frame .product-card {
+  flex: 0 0 calc(25% - 24px);
+  background-color: #000000;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bestSellling-frame .cards-frame .product-card:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+
+  box-shadow: inset 0px 0px 91px 38px #000000;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 22px;
+  box-shadow: inset 0px 0px 91px 38px #000000;
+
+  transition: all 0.8s ease;
+}
+
+.product-content {
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-brand {
+  color: var(--Color-Netural-White, rgba(255, 255, 255, 1));
+  font-family: Lato;
+  font-style: Light;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.product-name {
+  color: var(--Color-Netural-White, rgba(255, 255, 255, 1));
+  font-family: Lato;
+  font-style: Regular;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 2px;
+}
+
+.cards-frame .price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product-discount {
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: 500;
+  color: #a7ac6f;
+  margin-right: 15px;
+}
+
+.product-price {
+  color: var(--Color-Gray-500, rgba(120, 113, 108, 1));
+  font-family: Lato;
+  font-style: Regular;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  text-decoration: line-through;
+}
+
+/* Advertisement */
+.homepage .advertisement {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+.homepage .ads-restaurant-frame {
+  width: 1340px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.homepage .ads-info {
+  width: 50%;
+  height: 700px;
+  padding: 80px 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #a7ac6f;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.homepage .ads-info .ads-title {
+  color: var(--Color-Netural-White, rgba(255, 255, 255, 1));
+  font-family: Prata;
+  font-style: Regular;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -2%;
+  text-align: left;
+}
+
+.homepage .ads-info .ads-desc {
+  color: var(--Color-Gray-200, rgba(231, 229, 228, 1));
+  font-family: Lato;
+  font-style: Regular;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.homepage .ads-info .shop-txt {
+  display: inline-block;
+  font-family: "Lato";
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  padding: 18px 0;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0.8;
+}
+
+.homepage .ads-info .shop-txt::after {
+  display: none !important;
+}
+
+.homepage .ads-info .shop-txt:active {
+  transform: translateY(0);
+}
+
+.homepage .ads-image {
+  width: 50%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage .ads-image img {
+  object-fit: contain;
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.6));
+}
+
+/* Our product*/
+
+.homepage .ads-restaurant-framee {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.homepage .ads-restaurant-framee .ads-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ASOSIY QOIDA */
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -337,7 +337,7 @@ html {
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.15em;
-  color: #ffffff;
+  color: #a7ac6f;
   padding: 18px 0;
   margin-top: 20px;
   cursor: pointer;
@@ -347,7 +347,7 @@ html {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.8s;
-  opacity: 0;
+  opacity: 0.8;
 }
 
 .shop-txt::after {
@@ -361,7 +361,7 @@ html {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;

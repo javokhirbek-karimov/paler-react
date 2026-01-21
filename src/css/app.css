@@ -10,11 +10,11 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .main-content {
   flex: 1;
+  background-color: #000000;
 }
 
 @media (prefers-reduced-motion: no-preference) {

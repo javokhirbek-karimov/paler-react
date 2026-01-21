@@ -1,11 +1,23 @@
 import React from "react";
-import { Box, Stack, Container, IconButton } from "@mui/material";
+import { Box, Stack, IconButton, Menu, MenuItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "../../../css/navbar.css";
 import { LanguageOutlined } from "@mui/icons-material";
 
 export function HomeNavbar() {
   const authMember = true;
+
+  const [langAnchorEl, setLangAnchorEl] = React.useState<null | HTMLElement>(
+    null,
+  );
+
+  const openLangMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setLangAnchorEl(event.currentTarget);
+  };
+
+  const closeLangMenu = () => {
+    setLangAnchorEl(null);
+  };
 
   return (
     <Box className="home-navbar-container">
@@ -52,9 +64,27 @@ export function HomeNavbar() {
               <NavLink to="/about">About Us</NavLink>
             </Stack>
             <Stack sx={{ display: "flex" }} flexDirection={"row"}>
-              <IconButton>
+              <IconButton onClick={openLangMenu}>
                 <LanguageOutlined />
               </IconButton>
+              <Menu
+                anchorEl={langAnchorEl}
+                open={Boolean(langAnchorEl)}
+                onClose={closeLangMenu}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+              >
+                <MenuItem onClick={closeLangMenu}>English</MenuItem>
+                <MenuItem onClick={closeLangMenu}>한국어</MenuItem>
+                <MenuItem onClick={closeLangMenu}>O‘zbek</MenuItem>
+              </Menu>
+
               <IconButton>
                 <img src="/icons/user.svg" alt="" />
               </IconButton>

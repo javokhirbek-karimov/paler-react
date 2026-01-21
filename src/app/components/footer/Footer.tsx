@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -13,16 +12,14 @@ const Footers = styled.div`
 `;
 
 export default function Footer() {
-  const authMember = null;
-
   return (
     <Footers>
-      <Container>
-        <Stack flexDirection={"column"} sx={{ mt: "94px" }} className="footer">
+      <Container disableGutters>
+        <Stack flexDirection={"column"} className="footer">
           <NavLink to="/">
             <img className="brand-logo" src="/img/PALER-white.png" alt="" />
           </NavLink>
-          <Box className="phone-number">010-7494-7510</Box>
+          <Box className="phone-number">+8210-7494-7510</Box>
           <Box className="email">kjavohir009@gmail.com</Box>
           <Box className="address">
             3891 Ranchview Dr.Richardson, California 62639
