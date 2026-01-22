@@ -1,0 +1,728 @@
+.order-page .order-container {
+  max-width: 1320px;
+  margin: auto;
+}
+
+.MuiTabPanel-root {
+  background: #000000;
+  padding: 40px 0;
+}
+
+.MuiTabPanel-root .MuiStack-root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.MuiTabPanel-root .product-info {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 24px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.MuiTabPanel-root .product-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.MuiTabPanel-root .product-info:hover {
+  border-color: rgba(167, 172, 111, 0.3);
+}
+
+.MuiTabPanel-root .product-info:hover::before {
+  opacity: 1;
+}
+
+.MuiTabPanel-root .product-img {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.MuiTabPanel-root .product-img .image {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  transition: transform 0.6s ease;
+}
+
+.MuiTabPanel-root .product-info:hover .product-img .image {
+  transform: scale(1.1);
+}
+
+.MuiTabPanel-root .product-info > .product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.MuiTabPanel-root .product-name {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.MuiTabPanel-root .price {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0;
+}
+
+.MuiTabPanel-root .product-discount {
+  font-family: "Lato", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #a7ac6f;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.MuiTabPanel-root .product-price {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #78716c;
+  text-decoration: line-through;
+  margin: 0;
+  opacity: 0.6;
+}
+
+.MuiTabPanel-root .for-quantity {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  width: fit-content;
+  padding: 0;
+}
+
+.MuiTabPanel-root .for-quantity button {
+  width: 45px;
+  height: 45px;
+  background: transparent;
+  color: #a7ac6f;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.MuiTabPanel-root .for-quantity .remove {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.MuiTabPanel-root .for-quantity .add {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.MuiTabPanel-root .for-quantity button:hover {
+  background: rgba(167, 172, 111, 0.15);
+  color: #d4d89f;
+}
+
+.MuiTabPanel-root .for-quantity button:active {
+  transform: scale(0.95);
+}
+
+.MuiTabPanel-root .quantity {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  min-width: 50px;
+  text-align: center;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.MuiTabPanel-root .return-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(167, 172, 111, 0.08);
+
+  border: 1px solid rgba(167, 172, 111, 0.15);
+  width: fit-content;
+}
+
+.MuiTabPanel-root .return-info img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.MuiTabPanel-root .return-text {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a7ac6f;
+  margin: 0;
+}
+
+.MuiTabPanel-root .product-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  z-index: 1;
+}
+
+.MuiTabPanel-root .close-button {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.MuiTabPanel-root .close-button:hover {
+  opacity: 1;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.MuiTabPanel-root .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.MuiTabPanel-root .checkbox:hover {
+  color: #a7ac6f;
+}
+
+.MuiTabPanel-root .checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.MuiTabPanel-root .checkbox input[type="checkbox"]:hover {
+  border-color: #a7ac6f;
+  background: rgba(167, 172, 111, 0.1);
+}
+
+.MuiTabPanel-root .checkbox input[type="checkbox"]:checked {
+  background: #a7ac6f;
+  border-color: #a7ac6f;
+}
+
+.MuiTabPanel-root .checkbox input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.order-page .container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  width: 1300px;
+}
+
+.order-page .order-chap {
+  max-width: 70%;
+  flex: 1;
+}
+
+.order-page .order-right {
+  width: 400px;
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+}
+
+.order-page .orders-total {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.order-page .orders-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-page .orders-title {
+  font-family: "Lato";
+  font-style: Regular;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.order-page .orders-total p:last-child {
+  font-family: "Lato";
+  font-style: Regular;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  color: #ffffff;
+  margin: 0;
+}
+
+.order-page .line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  margin: 20px 0;
+}
+
+.order-page .additional-payments {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-page .Taxes,
+.order-page .taxes-payments {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-page .taxes-title {
+  font-family: "Lato";
+  font-size: 16px;
+  font-style: Regular;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.order-page .taxes-total {
+  font-family: "Lato";
+  font-style: Regular;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+  color: #a7ac6f;
+  margin: 0;
+}
+
+.order-page .grandTotal-payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid rgba(167, 172, 111, 0.15);
+  margin-top: 10px;
+}
+
+.order-page .grandTotal-title {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-page .grandTotal-total {
+  font-family: "Lato";
+  font-size: 28px;
+  font-weight: 700;
+  color: #a7ac6f;
+  margin: 0;
+}
+
+.order-page .payment-box {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.order-page .payment-button {
+  width: 100%;
+  padding: 18px;
+  color: #a7ac6f;
+  border: 2px solid #a7ac6f;
+  background: #000000;
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-page .payment-button:hover {
+  background: #a7ac6f;
+  color: #ffffff;
+}
+
+/* Process Orders */
+
+.MuiTabPanel-root .orders {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.MuiTabPanel-root .orders__card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.MuiTabPanel-root .orders__items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.MuiTabPanel-root .orders__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.MuiTabPanel-root .orders__item:hover {
+  border-color: rgba(167, 172, 111, 0.2);
+}
+
+.MuiTabPanel-root .orders__item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.MuiTabPanel-root .orders__item-title {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+}
+
+.MuiTabPanel-root .orders__item-price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.MuiTabPanel-root .orders__item-price p {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #a7ac6f;
+  margin: 0;
+}
+
+.MuiTabPanel-root .orders__item-price img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+}
+
+.MuiTabPanel-root .orders__operator {
+  opacity: 0.4 !important;
+}
+
+.MuiTabPanel-root .orders__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.MuiTabPanel-root .orders__summary-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid rgba(167, 172, 111, 0.15);
+  flex-wrap: wrap;
+}
+
+.MuiTabPanel-root .orders__summary-row p {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.MuiTabPanel-root .orders__summary-row p:nth-child(2),
+.MuiTabPanel-root .orders__summary-row p:nth-child(5),
+.MuiTabPanel-root .orders__summary-row p:nth-child(8) {
+  color: #a7ac6f;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.MuiTabPanel-root .orders__summary-row img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.MuiTabPanel-root .orders__date {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+.MuiTabPanel-root .orders__verify-button {
+  width: 100%;
+  padding: 16px !important;
+  background-color: #000000;
+  color: #a7ac6f !important;
+  border: 1px solid #a7ac6f;
+  font-family: "Lato" !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  transition: all 0.5s ease !important;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.MuiTabPanel-root .orders__verify-button:hover {
+  background: #a7ac6f !important;
+  color: #000000;
+}
+
+.MuiTabPanel-root .orders__verify-button:hover,
+.MuiTabPanel-root .orders__verify-button:hover span {
+  color: #000000 !important;
+}
+
+.MuiTabPanel-root .orders__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+.MuiTabPanel-root .orders__empty-image {
+  width: 200px;
+  height: 200px;
+  opacity: 0.3;
+  filter: brightness(0) invert(1);
+}
+
+/* Finished Orders */
+.MuiTabPanel-root .watch-main-box {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.MuiTabPanel-root .watch-main-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.MuiTabPanel-root .watch-box-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.MuiTabPanel-root .watch-item-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.MuiTabPanel-root .watch-dish-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+}
+
+.MuiTabPanel-root .watch-title {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+  letter-spacing: -0.3px;
+}
+
+.MuiTabPanel-root .watch-price-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.MuiTabPanel-root .watch-price-box p {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #a7ac6f;
+  margin: 0;
+}
+
+.MuiTabPanel-root .watch-price-box img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.MuiTabPanel-root .watch-total-box {
+  position: relative;
+  z-index: 1;
+}
+
+.MuiTabPanel-root .watch-box-total {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(167, 172, 111, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(167, 172, 111, 0.15);
+  flex-wrap: wrap;
+}
+
+.MuiTabPanel-root .watch-box-total p {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.MuiTabPanel-root .watch-box-total p:nth-child(2),
+.MuiTabPanel-root .watch-box-total p:nth-child(5),
+.MuiTabPanel-root .watch-box-total p:nth-child(8) {
+  color: #a7ac6f;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.MuiTabPanel-root .watch-box-total img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+/* Empty State */
+.MuiTabPanel-root .MuiBox-root[style*="flexDirection"] {
+  padding: 80px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+.MuiTabPanel-root .MuiBox-root[style*="flexDirection"] img {
+  opacity: 0.3;
+  filter: brightness(0) invert(1);
+}

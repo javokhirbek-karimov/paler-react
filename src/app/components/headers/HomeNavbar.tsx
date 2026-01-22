@@ -3,8 +3,10 @@ import { Box, Stack, IconButton, Menu, MenuItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "../../../css/navbar.css";
 import { LanguageOutlined } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export function HomeNavbar() {
+  const { t, i18n } = useTranslation(); // navbar namespace
   const authMember = true;
 
   const [langAnchorEl, setLangAnchorEl] = React.useState<null | HTMLElement>(
@@ -17,6 +19,11 @@ export function HomeNavbar() {
 
   const closeLangMenu = () => {
     setLangAnchorEl(null);
+  };
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    closeLangMenu();
   };
 
   return (
@@ -41,7 +48,11 @@ export function HomeNavbar() {
             className="menu"
           >
             <NavLink to="/">
-              <img className="brand-logo" src="/img/PALER.png" alt="" />
+              <img
+                className="brand-logo"
+                src="/img/PALER.png"
+                alt="PALER Logo"
+              />
             </NavLink>
             <Stack
               flexDirection={"row"}
@@ -49,20 +60,13 @@ export function HomeNavbar() {
               maxWidth={"948px"}
               alignItems={"center"}
             >
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/products">Products</NavLink>
-              {authMember ? (
-                <Box>
-                  <NavLink to="/orders">Orders</NavLink>
-                </Box>
-              ) : null}
-              {authMember ? (
-                <Box>
-                  <NavLink to="/mypage">My Page</NavLink>
-                </Box>
-              ) : null}
-              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/">{t("home")}</NavLink>
+              <NavLink to="/products">{t("products")}</NavLink>
+              {authMember && <NavLink to="/orders">{t("orders")}</NavLink>}
+              {authMember && <NavLink to="/mypage">{t("mypage")}</NavLink>}
+              <NavLink to="/about">{t("about")}</NavLink>
             </Stack>
+
             <Stack sx={{ display: "flex" }} flexDirection={"row"}>
               <IconButton onClick={openLangMenu}>
                 <LanguageOutlined />
@@ -71,40 +75,34 @@ export function HomeNavbar() {
                 anchorEl={langAnchorEl}
                 open={Boolean(langAnchorEl)}
                 onClose={closeLangMenu}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
               >
-                <MenuItem onClick={closeLangMenu}>English</MenuItem>
-                <MenuItem onClick={closeLangMenu}>한국어</MenuItem>
-                <MenuItem onClick={closeLangMenu}>O‘zbek</MenuItem>
+                <MenuItem onClick={() => changeLanguage("en")}>
+                  English
+                </MenuItem>
+                <MenuItem onClick={() => changeLanguage("ko")}>한국어</MenuItem>
+                <MenuItem onClick={() => changeLanguage("uz")}>O‘zbek</MenuItem>
               </Menu>
 
               <IconButton>
-                <img src="/icons/user.svg" alt="" />
+                <img src="/icons/user.svg" alt="user" />
               </IconButton>
               <IconButton>
-                <img src="/icons/basket.svg" alt="" />
+                <img src="/icons/basket.svg" alt="basket" />
               </IconButton>
             </Stack>
           </Stack>
+
           <Stack className={"header-frame"}>
             <Stack className={"detail"}>
               <Stack spacing={1}>
-                <Box className={"head-main-txt"}>Timeless Precision,</Box>
-                <Box className={"head-main-txt"}>Unmatched Elegence</Box>
+                <Box className={"head-main-txt"}>{t("tagline1")}</Box>
+                <Box className={"head-main-txt"}>{t("tagline2")}</Box>
               </Stack>
-              <Box className={"welcome-txt"}>
-                Discover finely crafted timepieces that blend tradition,
-                innovation, and sophistication.
-              </Box>
+              <Box className={"welcome-txt"}>{t("welcome")}</Box>
               <NavLink className={"shop-txt"} to="/products">
-                SHOP NOW
+                {t("shoping")}
               </NavLink>
             </Stack>
           </Stack>

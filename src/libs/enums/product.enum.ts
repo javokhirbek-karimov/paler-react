@@ -1,4 +1,5 @@
 export enum ProductBrand {
+  ALL = "ALL",
   ARMANI = "ARMANI",
   TISSOT = "TISSOT",
   BREITLING = "BREITLING",

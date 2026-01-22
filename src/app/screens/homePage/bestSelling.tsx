@@ -6,6 +6,7 @@ import {
   ProductStatus,
 } from "../../../libs/enums/product.enum";
 import { Product } from "../../../libs/types/product";
+import { useTranslation } from "react-i18next";
 
 const staticBestSelling: Product[] = [
   {
@@ -115,15 +116,13 @@ const staticBestSelling: Product[] = [
 ];
 
 export default function BestSelling() {
+  const { t } = useTranslation();
   return (
     <div className="bestSellling-frame">
       <Container>
         <Stack className="main">
-          <Box className="category-title">Our Best Selling Products</Box>
-          <Box className="category-desc">
-            Explore our best-selling watch collections, crafted for style,
-            precision, and lasting sophistication.
-          </Box>
+          <Box className="category-title">{t("besttitle")}</Box>
+          <Box className="category-desc">{t("bestdesc")}</Box>
 
           <Stack className="cards-frame">
             <CssVarsProvider>
@@ -158,9 +157,7 @@ export default function BestSelling() {
                   );
                 })
               ) : (
-                <Box className="no-data">
-                  Best selling products are not available
-                </Box>
+                <Box className="no-data">{t("noData")}</Box>
               )}
             </CssVarsProvider>
           </Stack>

@@ -1,0 +1,52 @@
+{
+  "home": "홈",
+  "products": "제품",
+  "orders": "주문",
+  "mypage": "내 페이지",
+  "about": "회사 소개",
+  "tagline1": "시간을 초월한 정밀함,",
+  "tagline2": "비할 데 없는 우아함",
+  "welcome": "전통, 혁신 및 세련됨을 결합한 정교한 시계를 발견하십시오.",
+  "shoping": "지금 쇼핑",
+  "language": "언어",
+  "aboutCompany": "회사 소개",
+  "ourStory": "회사 이야기",
+  "shop": "쇼핑",
+  "blog": "블로그",
+  "faq": "자주 묻는 질문",
+  "helpInfo": "도움말 정보",
+  "shippingInfo": "배송 정보",
+  "returns": "반품 및 환불",
+  "paymentOptions": "결제 옵션",
+  "contactUs": "문의하기",
+  "terms": "서비스 약관",
+  "privacyPolicy": "개인정보 보호정책",
+  "termsOfService": "이용 약관",
+  "cookiePolicy": "쿠키 정책",
+  "accountInfo": "계정 정보",
+  "login": "로그인/계정 생성",
+  "trackOrder": "주문 조회",
+  "wishlist": "위시리스트",
+  "title": "모든 스타일과 행사에 맞는 럭셔리 시계 발견",
+  "desc": "정교함, 내구성 및 탁월함을 위해 제작된 프리미엄 시계 컬렉션을 만나보세요.",
+  "besttitle": "가장 인기 있는 제품",
+  "bestdesc": "스타일, 정밀함 및 지속적인 세련됨을 위해 제작된 베스트셀러 시계 컬렉션을 확인해보세요.",
+  "noData": "인기 상품이 없습니다",
+  "freeShipping": {
+    "title": "무료 배송",
+    "desc": "저렴한 가격에 즐기실 수 있습니다"
+  },
+  "serviceReturns": {
+    "title": "15일 반품",
+    "desc": "교환은 15일 이내"
+  },
+  "support": {
+    "title": "고객 지원",
+    "desc": "24시간, 주 7일 지원"
+  },
+  "payment": {
+    "title": "유연한 결제",
+    "desc": "여러 신용카드로 결제 가능"
+  },
+  "ourBrands": "우리 브랜드"
+}

@@ -1,226 +1,251 @@
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.about-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  padding-top: 88px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
-  color: white;
-  padding: 80px 0;
-  margin-bottom: 60px;
-}
-
-.hero-title {
-  font-weight: 700;
-  margin-bottom: 16px;
-  animation: fadeInUp 1s ease-out;
-}
-
-.hero-subtitle {
-  color: #cbd5e1;
-  font-weight: 300;
-  animation: fadeInUp 1.2s ease-out;
-}
-
-/* Main Content */
-.main-content {
-  padding-bottom: 80px;
-}
-
-/* Story Section */
-.story-section {
-  margin-bottom: 80px;
-  animation: fadeIn 1.5s ease-out;
-}
-
-.section-title {
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 24px;
+.about-page .hero-section {
+  width: 100%;
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-bottom: 1px solid rgba(167, 172, 111, 0.2);
   position: relative;
-  display: inline-block;
+  overflow: hidden;
 }
 
-.section-title::after {
+.about-page .hero-section::before {
   content: "";
   position: absolute;
-  bottom: -8px;
+  top: 0;
   left: 0;
-  width: 0;
-  height: 3px;
-  background: #1e293b;
-  transition: width 0.5s ease;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(167, 172, 111, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
-.section-title:hover::after {
-  width: 100%;
-}
-
-.section-title.center {
+.about-page .hero-title {
+  font-family: "Lato", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #ffffff;
   text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.about-page .hero-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #a7ac6f, transparent);
+}
+
+.about-page .hero-subtitle {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #a7ac6f;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.about-page .main-content {
+  padding: 80px 0 120px;
+  max-width: 1200px;
+}
+
+.about-page .story-section {
+  margin-bottom: 100px;
+}
+
+.about-page .section-title {
+  font-family: "Lato", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
   margin-bottom: 40px;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 20px;
 }
 
-.story-text {
-  color: #475569;
-  font-size: 1.125rem;
-  line-height: 1.8;
+.about-page .section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: #a7ac6f;
 }
 
-/* Values Section */
-.values-section {
-  margin-bottom: 80px;
-  animation: fadeInUp 1.8s ease-out;
+.about-page .section-title.center {
+  text-align: center;
 }
 
-.value-card {
+.about-page .section-title.center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-page .story-text {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.9;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.about-page .values-section {
+  margin-bottom: 100px;
+}
+
+.about-page .value-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
   height: 100%;
-  transition: all 0.4s ease;
-  border-radius: 12px;
-  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.value-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.about-page .value-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(167, 172, 111, 0.05) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.value-icon {
-  width: 64px;
-  height: 64px;
-  background-color: #1e293b;
-  color: white;
-  border-radius: 12px;
+.about-page .value-card:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(167, 172, 111, 0.3) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(167, 172, 111, 0.15);
+}
+
+.about-page .value-card:hover::before {
+  opacity: 1;
+}
+
+.about-page .value-card .MuiCardContent-root {
+  padding: 40px !important;
+}
+
+.about-page .value-icon {
+  color: #a7ac6f;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  transition: all 0.3s ease;
+  justify-content: flex-start;
 }
 
-.value-card:hover .value-icon {
-  transform: rotate(360deg) scale(1.1);
-  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
-}
-
-.value-title {
+.about-page .value-title {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
   font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 12px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
 }
 
-.value-description {
-  color: #64748b;
-  line-height: 1.7;
-}
-
-/* Mission Section */
-.mission-section {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
-  padding: 48px;
-  border-radius: 16px;
-  margin-bottom: 80px;
-}
-
-.mission-title {
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.mission-text {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: #cbd5e1;
-}
-
-/* Expertise Section */
-.expertise-section {
-  margin-bottom: 80px;
-}
-
-.expertise-content {
-  padding: 32px;
-  border-radius: 12px;
-  background-color: #ffffff;
-}
-
-.expertise-content p {
-  color: #475569;
+.about-page .value-description {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
 }
 
-/* Contact Section */
-.contact-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: white;
-  padding: 48px;
-  border-radius: 16px;
-  text-align: center;
+.about-page .mission-section {
+  background: linear-gradient(
+    135deg,
+    rgba(167, 172, 111, 0.08) 0%,
+    rgba(167, 172, 111, 0.03) 100%
+  ) !important;
+  border: 1px solid rgba(167, 172, 111, 0.2) !important;
+  border-radius: 20px !important;
+  padding: 60px !important;
+  margin-bottom: 100px;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-title {
+.about-page .mission-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(167, 172, 111, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.about-page .mission-title {
+  font-family: "Lato", sans-serif;
+  font-size: 36px;
   font-weight: 700;
-  margin-bottom: 16px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+  position: relative;
 }
 
-.contact-subtitle {
-  color: #cbd5e1;
-  margin-bottom: 32px;
-  font-weight: 300;
+.about-page .mission-text {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.9;
+  position: relative;
 }
 
-.contact-info {
-  color: #cbd5e1;
+.about-page .expertise-section {
+  margin-bottom: 100px;
 }
 
-.contact-info p {
-  margin: 8px 0;
+.about-page .expertise-content {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 40px !important;
+  margin-top: 30px;
 }
 
-.contact-phone {
-  margin-top: 16px !important;
-  font-weight: 600;
-  font-size: 1.125rem;
+.about-page .expertise-content .MuiTypography-root {
+  font-family: "Lato", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.9;
 }

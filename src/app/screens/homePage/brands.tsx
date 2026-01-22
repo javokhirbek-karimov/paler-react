@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Avatar } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const brands = [
   { id: 1, name: "ROLEX", img: "/img/Rolex.png" },
@@ -13,10 +14,11 @@ const brands = [
 ];
 
 const BrandSwipe = () => {
+  const { t } = useTranslation();
   return (
     <Box className="brand-swipe">
       <Box className="layout-container">
-        <Box className="brands-title">OUR BRANDS</Box>
+        <Box className="brands-title">{t("ourBrands")}</Box>
         <Box className="brands">
           {brands.map((brand) => (
             <Avatar

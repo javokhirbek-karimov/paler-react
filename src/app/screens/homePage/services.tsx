@@ -2,33 +2,35 @@ import { Box, Stack } from "@mui/material";
 import Divider from "../../components/divider";
 
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
   return (
     <div className={"static-frame"}>
       <Stack className="info">
         <Stack className="static-box">
           <img className="static-icon" src="/icons/shipping-icon.png" alt="" />
-          <Box className="static-num">Free Shipping</Box>
-          <Box className="static-text">You will love at great low prices</Box>
+          <Box className="static-num">{t("freeShipping.title")}</Box>
+          <Box className="static-text">{t("freeShipping.desc")}</Box>
         </Stack>
 
         <Stack className="static-box">
           <img className="static-icon" src="/icons/15-days.png" alt="" />
-          <Box className="static-num">15 Days Returns</Box>
-          <Box className="static-text">Within 15 days for an exchange</Box>
+          <Box className="static-num">{t("serviceReturns.title")}</Box>
+          <Box className="static-text">{t("serviceReturns.desc")}</Box>
         </Stack>
 
         <Stack className="static-box">
           <img className="static-icon" src="/icons/huge-time.png" alt="" />
-          <Box className="static-num">Customer Support</Box>
-          <Box className="static-text">24 hours a day, 7 days a week</Box>
+          <Box className="static-num">{t("support.title")}</Box>
+          <Box className="static-text">{t("support.desc")}</Box>
         </Stack>
 
         <Stack className="static-box">
           <img className="static-icon" src="/icons/Flexible.png" alt="" />
-          <Box className="static-num">Flexible Payment</Box>
-          <Box className="static-text">Pay with multiple credit cards</Box>
+          <Box className="static-num">{t("payment.title")}</Box>
+          <Box className="static-text">{t("payment.desc")}</Box>
         </Stack>
       </Stack>
     </div>

@@ -1,0 +1,52 @@
+{
+  "home": "Home",
+  "products": "Products",
+  "orders": "Orders",
+  "mypage": "My Page",
+  "about": "About Us",
+  "tagline1": "Timeless Precision,",
+  "tagline2": "Unmatched Elegance",
+  "welcome": "Discover finely crafted timepieces that blend tradition, innovation, and sophistication.",
+  "shoping": "SHOP NOW",
+  "language": "Language",
+  "aboutCompany": "About Company",
+  "ourStory": "Our Story",
+  "shop": "Shop",
+  "blog": "Blog",
+  "faq": "FAQ",
+  "helpInfo": "Help Information",
+  "shippingInfo": "Shipping Information",
+  "returns": "Returns & Refunds",
+  "paymentOptions": "Payment Options",
+  "contactUs": "Contact Us",
+  "terms": "TERMS OF SERVICE",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "cookiePolicy": "Cookie Policy",
+  "accountInfo": "ACCOUNT INFORMATION",
+  "login": "Login/Create Account",
+  "trackOrder": "Track Order",
+  "wishlist": "Wishlist",
+  "title": "Discover Luxury Watches for Every Style & Occasion",
+  "desc": "Explore a curated collection of premium timepieces, crafted for sophistication, durability, and excellence.",
+  "besttitle": "Our Best Selling Products",
+  "bestdesc": "Explore our best-selling watch collections, crafted for style, precision, and lasting sophistication.",
+  "noData": "Best selling products are not available",
+  "freeShipping": {
+    "title": "Free Shipping",
+    "desc": "You will love at great low prices"
+  },
+  "serviceReturns": {
+    "title": "15 Days Returns",
+    "desc": "Within 15 days for an exchange"
+  },
+  "support": {
+    "title": "Customer Support",
+    "desc": "24 hours a day, 7 days a week"
+  },
+  "payment": {
+    "title": "Flexible Payment",
+    "desc": "Pay with multiple credit cards"
+  },
+  "ourBrands": "OUR BRANDS"
+}

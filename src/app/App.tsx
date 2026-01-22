@@ -4,7 +4,7 @@ import { Stack, Box, Typography, Container, Button, Link } from "@mui/material";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { AboutUsPage } from "./screens/aboutUsPage";
 import { ProductsPage } from "./screens/ProductsPage";
-import { UserPage } from "./screens/userPage";
+import UserPage from "./screens/userPage";
 import { OrderPage } from "./screens/orderPage";
 import { HomePage } from "./screens/homePage";
 import { useLocation } from "react-router-dom";
@@ -15,9 +15,12 @@ import "../css/app.css";
 import "../css/footer.css";
 import "../css/home.css";
 import "../css/products.css";
+import "../css/orders.css";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   console.log("Location=>", location);
 

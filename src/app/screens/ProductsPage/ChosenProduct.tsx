@@ -12,7 +12,7 @@ import {
 } from "../../../libs/enums/product.enum";
 
 export default function ChosenProduct() {
-  const [quantity, setQuantity] = useState(1); // default 1 dona
+  const [quantity, setQuantity] = useState(1);
 
   const product = {
     _id: "1",

@@ -1,0 +1,52 @@
+{
+  "home": "Bosh sahifa",
+  "products": "Mahsulotlar",
+  "orders": "Buyurtmalar",
+  "mypage": "Mening sahifam",
+  "about": "Biz haqimizda",
+  "tagline1": "Vaqt sinovidan o‘tgan aniqlik,",
+  "tagline2": "Taqqoslanmas nafislik",
+  "welcome": "An’analarni, innovatsiyani va nafislikni uyg‘unlashtirgan nozik soatlarni kashf eting.",
+  "shoping": "HOZIR SOTIB OLISH",
+  "language": "Til",
+  "aboutCompany": "Kompaniya haqida",
+  "ourStory": "Bizning hikoyamiz",
+  "shop": "Do‘kon",
+  "blog": "Blog",
+  "faq": "Tez-tez beriladigan savollar",
+  "helpInfo": "Yordam ma’lumotlari",
+  "shippingInfo": "Yetkazib berish ma’lumotlari",
+  "returns": "Qaytarish va pulni qaytarish",
+  "paymentOptions": "To‘lov usullari",
+  "contactUs": "Biz bilan bog‘lanish",
+  "terms": "XIZMAT SHARTLARI",
+  "privacyPolicy": "Maxfiylik siyosati",
+  "termsOfService": "Xizmat shartlari",
+  "cookiePolicy": "Cookie siyosati",
+  "accountInfo": "Hisob ma’lumotlari",
+  "login": "Kirish/Hisob yaratish",
+  "trackOrder": "Buyurtmani kuzatish",
+  "wishlist": "Istaklar ro‘yxati",
+  "title": "Har qanday uslub va tadbir uchun Luks Soatlar",
+  "desc": "Mukammallik, chidamlilik va nafislik uchun ishlab chiqilgan premium soatlar kollektsiyasini kashf eting.",
+  "besttitle": "Eng Ko‘p Sotilgan Mahsulotlarimiz",
+  "bestdesc": "Uslub, aniqlik va davomiy nafislik uchun ishlab chiqilgan eng ko‘p sotilgan soatlar kollektsiyasini kashf eting.",
+  "noData": "Eng ko‘p sotilgan mahsulotlar mavjud emas",
+  "freeShipping": {
+    "title": "Bepul Yetkazib Berish",
+    "desc": "Siz past narxlarda xarid qilishni yoqtirasiz"
+  },
+  "serviceReturns": {
+    "title": "15 Kun Ichida Qaytarish",
+    "desc": "Almashtirish uchun 15 kun ichida"
+  },
+  "support": {
+    "title": "Mijozlarni Qo‘llab-quvvatlash",
+    "desc": "Kuniga 24 soat, haftasiga 7 kun"
+  },
+  "payment": {
+    "title": "Moslashuvchan To‘lov",
+    "desc": "Bir nechta kredit kartalari bilan to‘lash mumkin"
+  },
+  "ourBrands": "BIZNING BRANDLAR"
+}

@@ -77,9 +77,16 @@
   font-style: Regular;
   font-size: 18px;
   background-color: #a7ac6f;
+  border: 1px solid #a7ac6f;
   color: #000000;
   font-weight: 400;
   border-radius: 5px;
+  outline: none;
+}
+
+.earching input:focus {
+  border-color: #a7ac6f;
+  outline: none;
 }
 
 .products .searching input::placeholder {
@@ -201,7 +208,7 @@
   margin-bottom: 2px;
 }
 
-.product-img::after {
+.products .product-card .product-img::after {
   content: "";
   position: absolute;
   inset: 0;

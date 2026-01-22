@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footers = styled.div`
   width: 100%;
@@ -12,6 +13,7 @@ const Footers = styled.div`
 `;
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <Footers>
       <Container disableGutters>
@@ -25,42 +27,45 @@ export default function Footer() {
             3891 Ranchview Dr.Richardson, California 62639
           </Box>
           <Box className="social-medias">
-            <a href="https://facebook.com" className="facebook">
+            <a href="https://youtube.com/Karimov_Javokhir" className="facebook">
               <img src="/icons/facebook.png" alt="" />
             </a>
             <a href="https://t.me/javoxir_karimov" className="telegram">
               <img src="/icons/telegram.png" alt="" />
             </a>
-            <a href="https://instagram.com" className="instagram">
+            <a
+              href="https://instagram.com/javoxir__karimov"
+              className="instagram"
+            >
               <img src="/icons/instagram.png" alt=""></img>
             </a>
           </Box>
           <Box className="categories">
             <Box className="categories1">
-              <Box className="category-name">About Company</Box>
-              <Box className="category">Our Story</Box>
-              <Box className="category">Shop</Box>
-              <Box className="category">Blog</Box>
-              <Box className="category">FAQ</Box>
+              <Box className="category-name">{t("aboutCompany")}</Box>
+              <Box className="category">{t("ourStory")}</Box>
+              <Box className="category">{t("shop")}</Box>
+              <Box className="category">{t("blog")}</Box>
+              <Box className="category">{t("faq")}</Box>
             </Box>
             <Box className="categories1">
-              <Box className="category-name">Help Information</Box>
-              <Box className="category">Shipping Information</Box>
-              <Box className="category">Returns & Refunds</Box>
-              <Box className="category">Payment Options</Box>
-              <Box className="category">Contact Us</Box>
+              <Box className="category-name">{t("helpInfo")}</Box>
+              <Box className="category">{t("shippingInfo")}</Box>
+              <Box className="category">{t("returns")}</Box>
+              <Box className="category">{t("paymentOptions")}</Box>
+              <Box className="category">{t("contactUs")}</Box>
             </Box>
             <Box className="categories1">
-              <Box className="category-name">TERMS OF SERVICE</Box>
-              <Box className="category">Privacy Policy</Box>
-              <Box className="category">Terms of Service</Box>
-              <Box className="category">Cookie Policy</Box>
+              <Box className="category-name">{t("terms")}</Box>
+              <Box className="category">{t("privacyPolicy")}</Box>
+              <Box className="category">{t("termsOfService")}</Box>
+              <Box className="category">{t("cookiePolicy")}</Box>
             </Box>
             <Box className="categories1">
-              <Box className="category-name">ACCOUNT INFORMATION</Box>
-              <Box className="category">Login/Create Account</Box>
-              <Box className="category">Track Order</Box>
-              <Box className="category">Wishlist</Box>
+              <Box className="category-name">{t("accountInfo")}</Box>
+              <Box className="category">{t("login")}</Box>
+              <Box className="category">{t("trackOrder")}</Box>
+              <Box className="category">{t("wishlist")}</Box>
             </Box>
           </Box>
         </Stack>

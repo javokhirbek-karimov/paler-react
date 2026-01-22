@@ -114,14 +114,21 @@ const products = [
 ];
 
 export default function Products() {
-  const [brand, setBrand] = useState<ProductBrand | "ALL">("ALL");
+  const [brand, setBrand] = useState<ProductBrand>(ProductBrand.ALL);
   type SortType = "POPULARITY" | "PRICE" | "NEW";
   const [sort, setSort] = useState<SortType>("POPULARITY");
-
+  const [search, setSearch] = useState("");
   const filteredProducts = useMemo(() => {
-    if (brand === "ALL") return products;
-    return products.filter((p) => p.productBrand === brand);
-  }, [brand]);
+    return products.filter((p) => {
+      const matchBrand = brand === ProductBrand.ALL || p.productBrand === brand;
+
+      const matchSearch =
+        p.productName.toLowerCase().includes(search.toLowerCase()) ||
+        p.productBrand.toLowerCase().includes(search.toLowerCase());
+
+      return matchBrand && matchSearch;
+    });
+  }, [brand, search]);
 
   return (
     <div className="products">
@@ -135,11 +142,10 @@ export default function Products() {
                 id="brand-select"
                 value={brand}
                 onChange={(e) =>
-                  setBrand(e.target.value as ProductBrand | "ALL")
+                  setBrand(e.target.value as ProductBrand | ProductBrand.ALL)
                 }
                 className="brand-select"
               >
-                <option value="ALL">All</option>
                 {Object.values(ProductBrand).map((b) => (
                   <option key={b} value={b}>
                     {b}
@@ -165,6 +171,7 @@ export default function Products() {
               className={"single-search-input"}
               name={"singleResearch"}
               placeholder={"Type here..."}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </Box>
         </Stack>
@@ -205,6 +212,37 @@ export default function Products() {
           </Container>
         </div>
       </Container>
+      <div className={"static-frame"}>
+        <Stack className="info">
+          <Stack className="static-box">
+            <img
+              className="static-icon"
+              src="/icons/shipping-icon.png"
+              alt=""
+            />
+            <Box className="static-num">Free Shipping</Box>
+            <Box className="static-text">You will love at great low prices</Box>
+          </Stack>
+
+          <Stack className="static-box">
+            <img className="static-icon" src="/icons/15-days.png" alt="" />
+            <Box className="static-num">15 Days Returns</Box>
+            <Box className="static-text">Within 15 days for an exchange</Box>
+          </Stack>
+
+          <Stack className="static-box">
+            <img className="static-icon" src="/icons/huge-time.png" alt="" />
+            <Box className="static-num">Customer Support</Box>
+            <Box className="static-text">24 hours a day, 7 days a week</Box>
+          </Stack>
+
+          <Stack className="static-box">
+            <img className="static-icon" src="/icons/Flexible.png" alt="" />
+            <Box className="static-num">Flexible Payment</Box>
+            <Box className="static-text">Pay with multiple credit cards</Box>
+          </Stack>
+        </Stack>
+      </div>
     </div>
   );
 }

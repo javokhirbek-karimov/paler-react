@@ -1,0 +1,310 @@
+.user-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 0 80px;
+}
+
+.user-page .my-page-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  width: 100%;
+}
+
+.user-page .my-page-left {
+  flex: 1;
+  max-width: 65%;
+}
+
+.user-page .menu-name {
+  font-family: "Lato";
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.user-page .menu-content {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.user-page .my-page-right {
+  width: 380px;
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+}
+
+.user-page .order-info-box {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-page .order-user-img {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 15px;
+}
+
+.user-page .order-user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #a7ac6f;
+  padding: 8px;
+  transition: all 0.4s ease;
+}
+
+.user-page .order-user-img:hover .order-user-avatar {
+  transform: scale(1.05);
+}
+
+.user-page .order-user-icon-box {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #dfe1cc 0%, #d2d4b9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.user-page .order-user-icon-box:hover {
+  transform: scale(1.1);
+}
+
+.user-page .order-user-icon-box img {
+  width: 22px;
+  height: 22px;
+}
+
+.user-page .order-user-name {
+  font-family: Lato;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.user-page .order-user-prof {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 2px 0;
+}
+
+.user-page .user-media-box {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 20px 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.user-page .user-media-box a {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-page .user-media-box img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.user-page .user-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.settings {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.settings .member-media-frame {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.settings .mb-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.settings .mb-image:hover {
+  transform: scale(1.05);
+}
+
+.settings .media-change-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings .media-change-box span {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.settings .media-change-box p {
+  font-family: "Lato";
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 16px 0;
+}
+
+.settings .up-del-box {
+  display: flex;
+  gap: 12px;
+}
+
+.settings .up-del-box .MuiButton-root {
+  padding: 10px 24px;
+  background: #000000;
+  border: 1px solid #a7ac6f;
+  transition: all 0.3s ease;
+}
+
+.settings .up-del-box .MuiButton-root:hover {
+  border-color: #a7ac6f;
+  box-shadow: 0 6px 20px rgba(167, 172, 111, 0.2);
+}
+
+.settings .up-del-box .MuiButton-root svg {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.settings .input-frame {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.settings .long-input,
+.settings .short-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings .spec-label {
+  font-family: "Lato";
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.settings .spec-input,
+.settings .spec-textarea {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.settings .spec-input:hover,
+.settings .spec-textarea:hover {
+  border-color: rgba(167, 172, 111, 0.3);
+}
+
+.settings .spec-input:focus,
+.settings .spec-textarea:focus {
+  border-color: #a7ac6f;
+}
+
+.settings .spec-textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: "Lato";
+}
+
+.settings .save-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings .save-box .MuiButton-root {
+  padding: 16px 50px;
+  background: #000000;
+  color: #a7ac6f;
+  border: 1px solid #a7ac6f;
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.settings .save-box .MuiButton-root:hover {
+  background: #a7ac6f;
+  border: none;
+  color: #000000;
+}
