@@ -16,6 +16,7 @@ import { ProductBrand } from "../../../libs/enums/product.enum";
 import { serverApi } from "../../../libs/config";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { CardItem } from "../../../libs/types/search";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
@@ -25,7 +26,12 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
   products,
 }));
 
-export default function Products() {
+interface ProductsProps {
+  onAdd: (item: CardItem) => void;
+}
+
+export default function Products(props: ProductsProps) {
+  const { onAdd } = props;
   const { setProducts } = actionDispatch(useDispatch());
   const dispatch = useDispatch();
   const { products } = useSelector(productsRetriever);

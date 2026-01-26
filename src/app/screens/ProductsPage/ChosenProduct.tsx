@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Dispatch } from "@reduxjs/toolkit";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setChosenProduct } from "./slice";
-import { Product } from "../../../libs/types/product";
 import { retrieveChosenProduct } from "./selector";
 import { createSelector } from "reselect";
 import ProductService from "../../services/ProductService";
 import { serverApi } from "../../../libs/config";
-
-const actionDispatch = (dispatch: Dispatch) => ({
-  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
-});
+import { CardItem } from "../../../libs/types/search";
 
 const chosenProductRetriever = createSelector(
   retrieveChosenProduct,
@@ -26,8 +21,12 @@ const chosenProductRetriever = createSelector(
   }),
 );
 
-export default function ChosenProduct() {
-  console.log("ChosenProduct");
+interface ChosenProductsProps {
+  onAdd: (item: CardItem) => void;
+}
+
+export default function ChosenProduct(props: ChosenProductsProps) {
+  const { onAdd } = props;
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const { id } = useParams() as { id: string };
@@ -116,7 +115,21 @@ export default function ChosenProduct() {
                     +
                   </button>
                 </Box>
-                <button>Add to Cart</button>
+                <Button
+                  variant="contained"
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    onAdd({
+                      _id: chosenProduct._id,
+                      quantity: quantity,
+                      name: chosenProduct.productName,
+                      discount: chosenProduct.productDiscount,
+                      image: chosenProduct.productImages[0],
+                    });
+                    e.stopPropagation();
+                  }}
+                >
+                  Add To Basket
+                </Button>
               </Box>
               <Box className="buy-now">Buy Now</Box>
             </Box>

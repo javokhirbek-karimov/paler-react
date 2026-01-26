@@ -2,6 +2,6 @@ export interface CardItem {
   _id: string;
   quantity: number;
   name: string;
-  price: number;
+  discount: number;
   image: string;
 }

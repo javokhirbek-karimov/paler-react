@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/app.css";
 import { Stack, Box, Typography, Container, Button, Link } from "@mui/material";
 import { NavLink, Route, Switch } from "react-router-dom";
@@ -16,24 +16,42 @@ import "../css/footer.css";
 import "../css/home.css";
 import "../css/products.css";
 import "../css/orders.css";
+import "../css/basket.css";
 import { useTranslation } from "react-i18next";
+import useBasket from "./hooks/useBasket";
 
 function App() {
   const location = useLocation();
   const { t, i18n } = useTranslation();
 
-  console.log("Location=>", location);
+  const { cardItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
 
   return (
     <div className="app-container">
-      {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
+      {location.pathname === "/" ? (
+        <HomeNavbar
+          cardItems={cardItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      ) : (
+        <OtherNavbar
+          cardItems={cardItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      )}
       <main className="main-content">
         <Switch>
           <Route path="/about">
             <AboutUsPage />
           </Route>
           <Route path="/products">
-            <ProductsPage />
+            <ProductsPage onAdd={onAdd} />
           </Route>
           <Route path="/mypage">
             <UserPage />

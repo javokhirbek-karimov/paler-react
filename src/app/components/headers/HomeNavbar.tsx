@@ -4,8 +4,20 @@ import { NavLink } from "react-router-dom";
 import "../../../css/navbar.css";
 import { LanguageOutlined } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import { CardItem } from "../../../libs/types/search";
+import Basket from "./Basket";
 
-export function HomeNavbar() {
+interface HomeNavbarProps {
+  cardItems: CardItem[];
+  onAdd: (item: CardItem) => void;
+  onRemove: (item: CardItem) => void;
+  onDelete: (item: CardItem) => void;
+  onDeleteAll: () => void;
+}
+
+export function HomeNavbar(props: HomeNavbarProps) {
+  const [isBasketOpen, setIsBasketOpen] = React.useState(false);
+  const { cardItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
   const { t, i18n } = useTranslation(); // navbar namespace
   const authMember = true;
 
@@ -88,9 +100,15 @@ export function HomeNavbar() {
               <IconButton>
                 <img src="/icons/user.svg" alt="user" />
               </IconButton>
-              <IconButton>
-                <img src="/icons/basket.svg" alt="basket" />
-              </IconButton>
+              <Basket
+                open={isBasketOpen}
+                onClose={() => setIsBasketOpen(false)}
+                cardItems={cardItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                onDelete={onDelete}
+                onDeleteAll={onDeleteAll}
+              />
             </Stack>
           </Stack>
 
