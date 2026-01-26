@@ -1,33 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper"; // FreeMode va Thumbs keraksiz bo'lsa olib tashlandi
+import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import {
-  ProductBrand,
-  ProductMaterial,
-  ProductStatus,
-} from "../../../libs/enums/product.enum";
+import { Dispatch } from "@reduxjs/toolkit";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setChosenProduct } from "./slice";
+import { Product } from "../../../libs/types/product";
+import { retrieveChosenProduct } from "./selector";
+import { createSelector } from "reselect";
+import ProductService from "../../services/ProductService";
+import { serverApi } from "../../../libs/config";
+
+const actionDispatch = (dispatch: Dispatch) => ({
+  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
+});
+
+const chosenProductRetriever = createSelector(
+  retrieveChosenProduct,
+  (chosenProduct) => ({
+    chosenProduct,
+  }),
+);
 
 export default function ChosenProduct() {
+  console.log("ChosenProduct");
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const { id } = useParams() as { id: string };
+  const { chosenProduct } = useSelector(chosenProductRetriever);
 
-  const product = {
-    _id: "1",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.ROLEX,
-    productName: "Rolex Submariner",
-    productPrice: 12500,
-    productDiscount: 10000,
-    productMaterial: ProductMaterial.STEEL,
-    productDesc: "aaaa",
-    productImages: ["/img/Day-1.png"],
-    productViews: 1200,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
+  useEffect(() => {
+    const product = new ProductService();
+    product
+      .getProduct(id)
+      .then((data) => {
+        console.log("BAckend data:", data);
+        dispatch(setChosenProduct(data));
+      })
+      .catch((err) => console.log(err));
+  }, [id, dispatch]);
+
+  if (!chosenProduct) return null;
 
   return (
     <div className="chosen-product">
@@ -47,37 +64,40 @@ export default function ChosenProduct() {
               ["--swiper-navigation-size" as any]: "30px",
             }}
           >
-            {product.productImages.map((image, index) => (
-              <SwiperSlide key={index} className="swiper-slide">
-                <img
-                  src={image} // Public folderdan
-                  alt={product.productName}
-                />
-              </SwiperSlide>
-            ))}
+            {chosenProduct.productImages.map((ele: string, index: number) => {
+              const imagePath = `${serverApi}/${ele}`;
+
+              return (
+                <SwiperSlide key={index} className="swiper-slide">
+                  <img src={imagePath} alt={chosenProduct.productName} />
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </Stack>
 
         <Stack className="chosen-product-info">
           <Box className="info-box">
-            <p className="product-name">{product.productName}</p>
+            <p className="product-name">{chosenProduct.productName}</p>
             <Box className="price">
-              <p className="product-discount">${product.productDiscount}</p>
-              <p className="product-price">${product.productPrice}</p>
+              <p className="product-discount">
+                ${chosenProduct.productDiscount}
+              </p>
+              <p className="product-price">${chosenProduct.productPrice}</p>
             </Box>
             <div className="line"></div>
             <Box className="product-info">
               <Box className="product-viewing">
                 <img src="/icons/product-view.png" alt="" />
                 <p className="view-text">
-                  Viewed by {product.productViews} people
+                  Viewed by {chosenProduct.productViews} people
                 </p>
               </Box>
-              <p className="product-desc">{product.productDesc}</p>
+              <p className="product-desc">{chosenProduct.productDesc}</p>
             </Box>
             <Box className="product-material">
               <p className="material-title">Material</p>
-              <p className="material-type">{product.productMaterial}</p>
+              <p className="material-type">{chosenProduct.productMaterial}</p>
             </Box>
             <Box className="buying-buttons">
               <Box className="for-carts">

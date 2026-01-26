@@ -1,4 +1,3 @@
-import { Member } from "./member";
 import { Order } from "./order";
 import { Product } from "./product";
 
@@ -18,7 +17,6 @@ export interface HomePageState {
 
 /* PRODUCTS PAGE */
 export interface ProductsPageState {
-  restaurant: Member | null;
   products: Product[];
   chosenProduct: Product | null;
 }

@@ -1,122 +1,72 @@
 import { Box, Container, Stack } from "@mui/material";
-import React, { useMemo, useState } from "react";
-import {
-  ProductBrand,
-  ProductMaterial,
-  ProductStatus,
-} from "../../../libs/enums/product.enum";
+import React, { useMemo, useState, useEffect, ChangeEvent } from "react";
 
-const products = [
-  {
-    _id: "1",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.ROLEX,
-    productName: "Rolex Submariner",
-    productPrice: 12500,
-    productDiscount: 10000,
-    productMaterial: ProductMaterial.STEEL,
-    productImages: ["img/Day-1.png"],
-    productViews: 1200,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "2",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.TISSOT,
-    productName: "Tissot PRX",
-    productPrice: 650,
-    productDiscount: 600,
-    productMaterial: ProductMaterial.STEEL,
-    productImages: ["img/Seastar-1.png"],
-    productViews: 980,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "3",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.BREITLING,
-    productName: "Breitling Navitimer",
-    productPrice: 8900,
-    productDiscount: 8500,
-    productMaterial: ProductMaterial.STEEL,
-    productImages: ["img/Navitimer-1.png"],
-    productViews: 760,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "4",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.IWC,
-    productName: "IWC Portu Giesser",
-    productPrice: 10200,
-    productDiscount: 8000,
-    productMaterial: ProductMaterial.LEATHER,
-    productImages: ["img/PortuGieser-1.png"],
-    productViews: 640,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "5",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.RADO,
-    productName: "Rado Captain",
-    productPrice: 2100,
-    productDiscount: 1500,
-    productMaterial: ProductMaterial.CERAMIC,
-    productImages: ["img/Captain-1.png"],
-    productViews: 540,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "6",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.PANERAI,
-    productName: "Panerai Luminor",
-    productPrice: 7800,
-    productDiscount: 7000,
-    productMaterial: ProductMaterial.LEATHER,
-    productImages: ["img/Summersible.png"],
-    productViews: 830,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "7",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.ARMANI,
-    productName: "Armani Exchange",
-    productPrice: 320,
-    productDiscount: 285,
-    productMaterial: ProductMaterial.STEEL,
-    productImages: ["img/Armani-1.png"],
-    productViews: 420,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "8",
-    productStatus: ProductStatus.ACTIVE,
-    productBrand: ProductBrand.JACOB,
-    productName: "Jacob & Co Astronomia",
-    productPrice: 25000,
-    productDiscount: 21000,
-    productMaterial: ProductMaterial.STEEL,
-    productImages: ["img/Godfather-1.png"],
-    productViews: 310,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
+import { Dispatch } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { setChosenProduct, setProducts } from "./slice";
+import {
+  Product,
+  ProductInquiry,
+  ProductOrder,
+} from "../../../libs/types/product";
+import { retrieveProducts } from "./selector";
+import { createSelector } from "reselect";
+import ProductService from "../../services/ProductService";
+import { ProductBrand } from "../../../libs/enums/product.enum";
+import { serverApi } from "../../../libs/config";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+const actionDispatch = (dispatch: Dispatch) => ({
+  setProducts: (data: Product[]) => dispatch(setProducts(data)),
+});
+
+const productsRetriever = createSelector(retrieveProducts, (products) => ({
+  products,
+}));
 
 export default function Products() {
+  const { setProducts } = actionDispatch(useDispatch());
+  const dispatch = useDispatch();
+  const { products } = useSelector(productsRetriever);
+  const [productSearch, setProductSearch] = useState<ProductInquiry>({
+    order: "productViews",
+    page: 1,
+    limit: 1000,
+    productBrand: ProductBrand.ALL,
+    search: "",
+  });
+
+  const [searchText, setSearchText] = useState<string>("");
+  const history = useHistory();
+
   const [brand, setBrand] = useState<ProductBrand>(ProductBrand.ALL);
-  type SortType = "POPULARITY" | "PRICE" | "NEW";
-  const [sort, setSort] = useState<SortType>("POPULARITY");
+
+  useEffect(() => {
+    const product = new ProductService();
+    product
+      .getProducts(productSearch)
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, [productSearch]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setProductSearch({ ...productSearch, search: searchText, page: 1 });
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchText]);
+
+  /* HANDLERS */
+
+  const searchOrderHandler = (order: ProductOrder) => {
+    setProductSearch((prev) => ({
+      ...prev,
+      order,
+      page: 1,
+    }));
+  };
   const [search, setSearch] = useState("");
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -128,7 +78,11 @@ export default function Products() {
 
       return matchBrand && matchSearch;
     });
-  }, [brand, search]);
+  }, [brand, search, products]);
+
+  const chooseProductHandler = (id: string) => {
+    history.push(`/products/${id}`);
+  };
 
   return (
     <div className="products">
@@ -137,7 +91,7 @@ export default function Products() {
         <Stack className="products-filter">
           <Stack className="filtering">
             <Box className="brands-filter">
-              <label htmlFor="brand-select">Brand</label>
+              <label htmlFor="brand-select">Brand:</label>
               <select
                 id="brand-select"
                 value={brand}
@@ -156,12 +110,14 @@ export default function Products() {
             <Box className="type-filter">
               <select
                 id="sort-select"
-                value={sort}
-                onChange={(e) => setSort(e.target.value as SortType)}
+                value={productSearch.order}
+                onChange={(e) =>
+                  searchOrderHandler(e.target.value as ProductOrder)
+                }
               >
-                <option value="Popularity">Sort by Popularity</option>
-                <option value="Price">Sort by Price</option>
-                <option value="New">Sort by Newest</option>
+                <option value="productViews"> Popularity</option>
+                <option value="productPrice"> Price</option>
+                <option value="createdAt"> Newest</option>
               </select>
             </Box>
           </Stack>
@@ -179,9 +135,16 @@ export default function Products() {
         {/* PRODUCTS */}
         <Stack direction="row" flexWrap="wrap" className="products-list">
           {filteredProducts.map((product) => (
-            <Box key={product.productName} className="product-card">
+            <Box
+              key={product._id}
+              className="product-card"
+              onClick={() => chooseProductHandler(product._id)}
+            >
               <Box className="product-img">
-                <img src={product.productImages[0]} alt={product.productName} />
+                <img
+                  src={`${serverApi}/${product.productImages[0]}`}
+                  alt={product.productName}
+                />
               </Box>
               <Box className="product-content">
                 <p className="product-brand">{product.productBrand}</p>

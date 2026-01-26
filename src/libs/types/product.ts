@@ -14,7 +14,7 @@ export interface Product {
   productMaterial?: ProductMaterial;
   productVolume?: number;
   productDesc?: string;
-  productImages?: string[];
+  productImages: string[];
   productViews?: number;
   createdAt?: Date;
   updatedAt?: Date;
@@ -27,3 +27,5 @@ export interface ProductInquiry {
   productBrand?: ProductBrand;
   search?: string;
 }
+
+export type ProductOrder = "createdAt" | "productPrice" | "productViews";

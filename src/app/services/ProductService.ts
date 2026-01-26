@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { serverApi } from "../../libs/config";
 import { Product, ProductInquiry } from "../../libs/types/product";
+import { ProductBrand } from "../../libs/enums/product.enum";
 
 class ProductService {
   private readonly path: string;
@@ -13,7 +14,8 @@ class ProductService {
   public async getProducts(input: ProductInquiry): Promise<Product[]> {
     try {
       let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
-      if (input.productBrand) url += `&productBrand=${input.productBrand}`;
+      if (input.productBrand && input.productBrand !== ProductBrand.ALL)
+        url += `&productBrand=${input.productBrand}`;
       if (input.search) url += `&search=${input.search}`;
 
       const result = await axios.get(url);

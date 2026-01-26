@@ -40,3 +40,7 @@ export enum ProductStatus {
   SOLD = "SOLD",
   DELETED = "DELETED",
 }
+
+export enum ProductOrder {
+  
+}
