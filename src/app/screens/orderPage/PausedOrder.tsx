@@ -64,7 +64,6 @@ export default function PausedOrders() {
     },
   ];
 
-  // Har bir product uchun alohida quantity va checkbox state
   const [quantities, setQuantities] = useState(() => products.map(() => 1));
   const [checkedItems, setCheckedItems] = useState(() =>
     products.map(() => false),
