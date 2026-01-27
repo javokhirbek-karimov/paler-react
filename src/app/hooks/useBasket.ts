@@ -33,7 +33,7 @@ const useBasket = () => {
 
     if (exist.quantity === 1) {
       const cardUpdate = cardItems.filter(
-        (item: CardItem) => item._id != input._id,
+        (item: CardItem) => item._id !== input._id,
       );
       setCardItems(cardUpdate);
       localStorage.setItem("cardData", JSON.stringify(cardUpdate));

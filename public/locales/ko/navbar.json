@@ -48,5 +48,6 @@
     "title": "유연한 결제",
     "desc": "여러 신용카드로 결제 가능"
   },
-  "ourBrands": "우리 브랜드"
+  "ourBrands": "우리 브랜드",
+  "languageChanged": "언어가 한국어로 변경되었습니다"
 }
