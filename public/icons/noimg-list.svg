@@ -1,0 +1,12 @@
+<svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="280" height="280" rx="24" fill="transparent"></rect>
+  <path d="M70 90H210V200C210 210 202 218 192 218H88C78 218 70 210 70 200V90Z" stroke="#A7AC6F" stroke-width="4"></path>
+  <path d="M95 90V75C95 65 103 57 113 57H167C177 57 185 65 185 75V90" stroke="#A7AC6F" stroke-width="4"></path>
+  <line x1="95" y1="130" x2="185" y2="130" stroke="#FFFFFF" stroke-width="3"></line>
+  <line x1="95" y1="155" x2="185" y2="155" stroke="#FFFFFF" stroke-width="3"></line>
+  <line x1="95" y1="180" x2="160" y2="180" stroke="#FFFFFF" stroke-width="3"></line>
+
+  <text x="140" y="250" text-anchor="middle" fill="#A7AC6F" font-size="16" font-family="Arial, sans-serif" font-weight="600">
+    No Orders Yet
+  </text>
+</svg>

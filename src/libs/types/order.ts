@@ -4,7 +4,7 @@ import { Product } from "./product";
 export interface OrderItem {
   _id: string;
   itemQuantity: number;
-  itemPrice: number;
+  itemDiscount: number;
   orderId: string;
   productId: string;
   createdAt: Date;
@@ -27,14 +27,14 @@ export interface Order {
 export interface OrderItemInput {
   productId: string;
   itemQuantity: number;
-  itemPrice: number;
+  itemDiscount: number;
   orderId?: string;
 }
 
 export interface OrderInquiry {
   page?: number;
   limit?: number;
-  orderStatus: OrderStatus;
+  orderStatus: OrderStatus | OrderStatus[];
 }
 
 export interface OrderUpdateInput {

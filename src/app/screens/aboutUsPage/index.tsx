@@ -99,7 +99,7 @@ export function AboutUsPage() {
           </Typography>
           <Grid container spacing={4}>
             {values.map((value, index) => (
-              <Grid item xs={12} md={6} key={index}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Card className="value-card">
                   <CardContent>
                     <Box className="value-icon">{value.icon}</Box>

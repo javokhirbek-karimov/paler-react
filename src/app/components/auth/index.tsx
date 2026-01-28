@@ -9,7 +9,7 @@ import { T } from "../../../libs/types/command";
 import { Messages } from "../../../libs/config";
 import { LoginInput, MemberInput } from "../../../libs/types/member";
 import MemberService from "../../services/MemberService";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { useGlobals } from "../../hooks/useGlobals";
 
 const useStyles = makeStyles((theme) => ({

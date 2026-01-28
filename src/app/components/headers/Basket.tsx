@@ -6,7 +6,11 @@ import Menu from "@mui/material/Menu";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { CardItem } from "../../../libs/types/search";
-import { serverApi } from "../../../libs/config";
+import { Messages, serverApi } from "../../../libs/config";
+import { toast } from "react-toastify";
+import { useGlobals } from "../../hooks/useGlobals";
+import OrderService from "../../services/OrderService";
+import { useHistory } from "react-router-dom";
 
 interface BasketProps {
   cardItems: CardItem[];
@@ -20,6 +24,8 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
   const { cardItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
+  const { authMember, setOrderBuilder } = useGlobals();
+  const history = useHistory();
 
   const itemsPrice = cardItems.reduce(
     (a: number, c: CardItem) => a + c.quantity * c.discount,
@@ -37,6 +43,25 @@ export default function Basket(props: BasketProps) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const proceedOrderHandler = async () => {
+    try {
+      handleClose();
+      if (!authMember) throw new Error(Messages.error2);
+
+      const order = new OrderService();
+      await order.createOrder(cardItems);
+
+      onDeleteAll();
+
+      setOrderBuilder(new Date());
+
+      history.push("/orders");
+    } catch (err) {
+      console.log(err);
+      toast.error("Signup failed. Please try again❗️");
+    }
   };
 
   return (
@@ -134,7 +159,11 @@ export default function Basket(props: BasketProps) {
           {cardItems.length !== 0 ? (
             <Box className={"basket-order"}>
               <span className={"price"}>Total: ${totalPrice}</span>
-              <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+              <Button
+                startIcon={<ShoppingCartIcon />}
+                variant={"contained"}
+                onClick={proceedOrderHandler}
+              >
                 Order
               </Button>
             </Box>
@@ -145,4 +174,7 @@ export default function Basket(props: BasketProps) {
       </Menu>
     </Box>
   );
+}
+function setOrderBuilder(arg0: Date) {
+  throw new Error("Function not implemented.");
 }

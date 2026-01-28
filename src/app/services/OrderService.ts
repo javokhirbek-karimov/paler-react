@@ -20,7 +20,7 @@ class OrderService {
       const orderItems: OrderItemInput[] = input.map((cardItem: CardItem) => {
         return {
           itemQuantity: cardItem.quantity,
-          itemPrice: cardItem.discount,
+          itemDiscount: cardItem.discount,
           productId: cardItem._id,
         };
       });
@@ -39,14 +39,31 @@ class OrderService {
     }
   }
 
+  public async cancelOrder(input: OrderUpdateInput) {
+    const url = `${this.path}/order/cancelOrder`;
+    const result = await axios.post(url, input, { withCredentials: true });
+    return result.data;
+  }
+
   public async getMyOrders(input: OrderInquiry): Promise<Order[]> {
     try {
       const url = `${this.path}/order/all`;
-      const query = `?page=${input.page}&limit=${input.limit}&orderStatus=${input.orderStatus}`;
 
-      const result = await axios.get(url + query, { withCredentials: true });
+      const params = new URLSearchParams();
+      params.append("page", String(input.page));
+      params.append("limit", String(input.limit));
 
-      console.log("getMyOrders:", result);
+      if (Array.isArray(input.orderStatus)) {
+        input.orderStatus.forEach((status) =>
+          params.append("orderStatus", status),
+        );
+      } else {
+        params.append("orderStatus", input.orderStatus);
+      }
+
+      const result = await axios.get(`${url}?${params.toString()}`, {
+        withCredentials: true,
+      });
 
       return result.data;
     } catch (err) {
