@@ -13,6 +13,10 @@ import { createSelector } from "reselect";
 import ProductService from "../../services/ProductService";
 import { serverApi } from "../../../libs/config";
 import { CardItem } from "../../../libs/types/search";
+import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const chosenProductRetriever = createSelector(
   retrieveChosenProduct,
@@ -28,9 +32,11 @@ interface ChosenProductsProps {
 export default function ChosenProduct(props: ChosenProductsProps) {
   const { onAdd } = props;
   const [quantity, setQuantity] = useState(1);
+  const history = useHistory();
   const dispatch = useDispatch();
   const { id } = useParams() as { id: string };
   const { chosenProduct } = useSelector(chosenProductRetriever);
+  const { authMember, setOrderBuilder } = useGlobals();
 
   useEffect(() => {
     const product = new ProductService();
@@ -44,6 +50,33 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   }, [id, dispatch]);
 
   if (!chosenProduct) return null;
+
+  const handleBuyNow = async () => {
+    if (!authMember) {
+      toast.error("Iltimos ro'yxatdan o'ting");
+      return;
+    }
+
+    try {
+      const orderService = new OrderService();
+      await orderService.createOrder([
+        {
+          _id: chosenProduct._id,
+          quantity,
+          name: chosenProduct.productName,
+          discount: chosenProduct.productDiscount,
+          image: chosenProduct.productImages[0],
+        },
+      ]);
+
+      toast.success("Order created successfully!");
+      setOrderBuilder(new Date());
+      history.push("/orders");
+    } catch (err) {
+      console.error(err);
+      toast.error("Order creation failed. Please try again.");
+    }
+  };
 
   return (
     <div className="chosen-product">
@@ -131,7 +164,9 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                   Add To Basket
                 </Button>
               </Box>
-              <Box className="buy-now">Buy Now</Box>
+              <Box className="buy-now" onClick={handleBuyNow}>
+                Buy Now
+              </Box>
             </Box>
             <div className="line"></div>
             <Box className="service-infos">

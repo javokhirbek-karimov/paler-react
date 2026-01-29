@@ -24,7 +24,7 @@ export function OrderPage() {
     actionDispatch(useDispatch());
 
   const history = useHistory();
-  const { orderBuilder } = useGlobals();
+  const { orderBuilder, authMember } = useGlobals();
   const [value, setValue] = useState("1");
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -60,6 +60,8 @@ export function OrderPage() {
       .then((data) => setFinishedOrders(data))
       .catch((err) => console.log(err));
   }, [orderInquiry, orderBuilder]);
+
+  if (!authMember) history.push("/");
 
   return (
     <div className="order-page">

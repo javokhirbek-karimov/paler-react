@@ -152,15 +152,16 @@ export default function Products(props: ProductsProps) {
                   alt={product.productName}
                 />
               </Box>
+
               <Box className="product-content">
                 <p className="product-brand">{product.productBrand}</p>
                 <p className="product-name">{product.productName}</p>
-              </Box>
-              <Box className="price">
-                <div className="product-discount">
-                  ${product.productDiscount}
-                </div>
-                <div className="product-price">${product.productPrice}</div>
+                <Box className="price">
+                  <div className="product-discount">
+                    ${product.productDiscount}
+                  </div>
+                  <div className="product-price">${product.productPrice}</div>
+                </Box>
               </Box>
             </Box>
           ))}
