@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Container, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setChosenProduct } from "./slice";
